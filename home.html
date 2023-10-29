@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicola Dal Cin</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        #container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+
+        #title {
+            position: absolute;
+            bottom: 85%; /* Adjust the distance from the bottom as needed */
+            left: 0;
+            width: 100%;
+            height: 10%;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #icon-band {
+            position: absolute;
+            bottom: 45%; /* Adjust the distance from the bottom as needed */
+            left: 0;
+            width: 100%;
+            height: 10%;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icon {
+            font-size: 0;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+    </style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>White Headings</title>
+        <style>
+            /* CSS to make headings white */
+            h1 {
+            margin-top: 20px;
+            font-size: 40px;
+            font-family: "Verdana", sans-serif;
+            color: white;
+            text-align: center;
+        }
+        </style>
+</head>
+<body>
+      <div id="container"></div>
+      <div id="title">
+        <h1>Nicola Dal Cin</h1>
+      </div>
+    <div id="container"></div>
+    <div id="icon-band">
+        <a class="icon" href="https://ca.linkedin.com/in/nicoladalcin" target="_blank">
+            <img src="images/in.png" alt="linkedin" width="70" height="70">
+        </a>
+        <a class="icon" href="https://github.com/dalcio99" target="_blank">
+            <img src="images/github.png" alt="github" width="115" height="115">
+        </a>
+        <a class="icon" href="uploads/cv.pdf" target="_blank">
+            <img src="images/cv.png" alt="cv" width="75" height="75">
+        </a>
+        <!-- Add more icons as needed -->
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Create a scene
+        const scene = new THREE.Scene();
+
+        // Create a camera
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+
+        // Create a renderer
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById("container").appendChild(renderer.domElement);
+
+        // Create a white wireframe material for the icosahedron
+        const material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
+
+        // Create an icosahedron geometry
+        const geometry = new THREE.IcosahedronGeometry(2.3, 1);
+
+        // Create a mesh with the geometry and material
+        const icosahedron = new THREE.Mesh(geometry, material);
+
+        // Add the icosahedron to the scene
+        scene.add(icosahedron);
+
+        // Function to animate the rotation
+        function animate() {
+            requestAnimationFrame(animate);
+            icosahedron.rotation.x += 0.0009;
+            icosahedron.rotation.y -= 0.0008;
+            icosahedron.rotation.z += 0.0007;
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Handle window resizing
+        window.addEventListener('resize', () => {
+            const newWidth = window.innerWidth;
+            const newHeight = window.innerHeight;
+            renderer.setSize(newWidth, newHeight);
+            camera.aspect = newWidth / newHeight;
+            camera.updateProjectionMatrix();
+        });
+    </script>
+</body>
+</html>
