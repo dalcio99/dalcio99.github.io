@@ -5,37 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nicola Dal Cin</title>
     <style>
+        /* General body styles */
         body {
             margin: 0;
             overflow: hidden;
-            background-color: black;
+            background-color: #121212; /* Dark background */
         }
 
+        /* Main container styles */
         #container {
             width: 100%;
             height: 100vh;
             position: relative;
         }
 
+        /* Title styles */
         #title {
             position: absolute;
-            bottom: 85%; /* Adjust the distance from the bottom as needed */
+            bottom: 85%;
             left: 0;
             width: 100%;
             height: 10%;
-            background: black;
+            background: #121212; /* Match body background */
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
+        h1 {
+            margin-top: 20px;
+            font-size: 40px;
+            font-family: "Verdana", sans-serif;
+            color: #D8FFB1; /* Light green accent */
+            text-align: center;
+        }
+
+        /* Icon band styles */
         #icon-band {
             position: absolute;
-            bottom: 45%; /* Adjust the distance from the bottom as needed */
+            bottom: 45%;
             left: 0;
             width: 100%;
             height: 10%;
-            background: black;
+            background: #121212;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -103,7 +115,7 @@
         document.getElementById("container").appendChild(renderer.domElement);
 
         // Create a white wireframe material for the icosahedron
-        const material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
+        const material = new THREE.MeshBasicMaterial({ color: 0xD8FFB1, wireframe: true });
 
         // Create an icosahedron geometry
         const geometry = new THREE.IcosahedronGeometry(2.3, 1);
